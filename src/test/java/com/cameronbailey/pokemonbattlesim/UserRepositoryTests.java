@@ -25,7 +25,7 @@ public class UserRepositoryTests {
     @Test
     public void testCreateUser() {
         User user = new User();
-        user.setEmail("CameronBradBailey1@gmail.com");
+        user.setEmail("CameronBradBailey@gmail.com");
         user.setPassword("12345");
         user.setUsername("Flavor Blasted");
 
@@ -34,5 +34,13 @@ public class UserRepositoryTests {
         User existUser = entityManager.find(User.class, savedUser.getId());
 
         assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
+    }
+
+    @Test
+    public void testFindUserByEmail() {
+        String email = "CameronBradBailey@gmail.com";
+
+        User user = repo.findUserByEmail(email);
+        assertThat(user).isNotNull();
     }
 }

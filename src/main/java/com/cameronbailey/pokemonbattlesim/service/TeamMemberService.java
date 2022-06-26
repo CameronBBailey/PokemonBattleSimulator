@@ -33,4 +33,8 @@ public class TeamMemberService {
     public void deleteTeamMembersByTeamId(Long id) {
         teamMemberRepository.deleteTeamMembersByTeamId(id);
     }
+
+    public  TeamMember getTeamMemberById(Long id) { return teamMemberRepository.findTeamMemberById(id); }
+
+    public TeamMember updateTeamMember(TeamMember teamMember) { return teamMemberRepository.save(teamMember);}
 }

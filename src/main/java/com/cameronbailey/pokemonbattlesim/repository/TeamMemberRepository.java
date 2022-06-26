@@ -9,7 +9,11 @@ import java.util.List;
 @Repository
 public interface TeamMemberRepository extends JpaRepository<TeamMember, Long>
 {
+
+    TeamMember findTeamMemberById(Long id);
     List<TeamMember> findTeamMembersByTeamId(Long id);
 
     void deleteTeamMembersByTeamId(Long id);
+
+
 }

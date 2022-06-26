@@ -22,9 +22,9 @@ public class PokemonService {
         return pokemonRepository.findAll();
     }
 
-    public Optional<Pokemon> getPokemonById(Long id) {
-        Optional<Pokemon> pokemon = pokemonRepository.findPokemonById(id);
-        return pokemon;
-    }
+//    public Optional<Pokemon> getPokemonById(Long id) {
+//        Optional<Pokemon> pokemon = pokemonRepository.findPokemonById(id);
+//        return pokemon;
+//    }
 
 }

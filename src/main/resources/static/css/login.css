@@ -1,0 +1,28 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginform {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: larger;
+}
+
+.logintitle {
+    font-size: xxx-large;
+}
+
+.btn {
+    margin-top: 8px;
+}
+
+#email {
+    margin-bottom: 12px;
+}
+
+#password {
+    margin-bottom: 12px;
+}

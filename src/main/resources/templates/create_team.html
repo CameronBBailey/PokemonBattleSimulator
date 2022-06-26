@@ -7,16 +7,19 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/navbar.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
+<div th:replace="navbar :: navbar"></div>
     <div class = "container">
         <div class = "row">
             <div class = "col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-                <h1 class = "text-center"> Create new Team</h1>
+                <h1 class = "text-center"> Create New Team</h1>
                 <div class = "card-body">
                     <form th:action="@{/team}" th:object = "${team}" method="POST">
                         <div class = "form-group">
-                            <label> Team Name</label>
+                            <label class="createnewteamteamname"> Team Name</label>
                             <input
                                 type = "text"
                                 name = "name"
@@ -24,20 +27,8 @@
                                 class = "form-control"
                                 placeholder = "Enter Team Name" />
                         </div>
-
-                        <div class = "form-group">
-                            <label> User Id</label>
-                            <input
-                                    type = "text"
-                                    name = "user"
-                                    th:field = "*{user}"
-                                    class = "form-control"
-                                    placeholder = "Enter User Id"
-                                    />
-                        </div>
-
                         <div class = "box-footer">
-                            <button type="submit" class = "btn btn-primary">
+                            <button type="submit" class = "btn btn-secondary">
                                 Submit
                             </button>
                         </div>

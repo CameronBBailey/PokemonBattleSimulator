@@ -1,0 +1,26 @@
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.row {
+    margin: 12px;
+}
+
+.table {
+    margin: 30px;
+    width: auto;
+}
+
+.createnewteamteamname {
+    font-size: xx-large;
+}

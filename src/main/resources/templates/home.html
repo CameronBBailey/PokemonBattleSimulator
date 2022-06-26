@@ -7,12 +7,18 @@
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/navbar.css"/>
+  <link rel="stylesheet" href="/css/home.css"/>
 </head>
-<body>
+<body >
+<div th:replace="navbar :: navbar"></div>
 <div class="container text-center">
   <h1>Welcome to the Pokemon Battle Simulator</h1>
-  <h3><a th:href="@{/register}">Register</a></h3>
-  <h3><a th:href="@{/login}">Login</a></h3>
+</div>
+<div class="backgroundimage">
+  <div>
+  <img src='https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_auto/c_scale,w_800/ncom/en_US/merchandising/curated%20list/Explore%20the%20world%20of%20Pok%C3%A9mon/PLP_Hero_Characters_Pokemon' />
+  </div>
 </div>
 
 </body>

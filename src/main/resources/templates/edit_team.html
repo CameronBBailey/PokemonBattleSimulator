@@ -7,8 +7,11 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/navbar.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
+<div th:replace="navbar :: navbar"></div>
 <div class = "container">
     <div class = "row">
         <div class = "col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
@@ -34,6 +37,41 @@
             </div>
         </div>
     </div>
+
+<table class = "table table-striped table-bordered">
+    <thead class = "table-dark">
+    <tr>
+        <th> Position</th>
+        <th> Name</th>
+        <th> Sprite</th>
+        <th> Item</th>
+        <th> Nature</th>
+        <th> Ability</th>
+        <th> Action</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each = "teamMember: ${teamMember}">
+
+        <td th:text= "${teamMember.position}"></td>
+        <td th:text= "${teamMember.pokemon.name}"></td>
+        <td><img th:src="@{${'https://img.pokemondb.net/sprites/x-y/normal/' + #strings.toLowerCase(teamMember.pokemon.name) + '.png'}}" /></td>
+<!--        <td th:text= "${teamMember.ability}"></td>-->
+        <td th:text= "${teamMember.item.name}"></td>
+        <td th:text= "${teamMember.nature.name}"></td>
+        <td th:text= "${teamMember.ability.name}"></td>
+
+        <td>
+            <a th:href = "@{editTeamMember/{teamId}/{id} (id=${teamMember.id},teamId=${team.id})}"
+               class = "btn btn-primary">Update</a>
+
+        </td>
+    </tr>
+    </tbody>
+
+</table>
 </div>
 </body>
 </html>

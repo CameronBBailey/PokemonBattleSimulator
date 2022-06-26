@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Teams</title>
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/navbar.css"/>
+  <link rel="stylesheet" href="/css/edit_team_member.css"/>
+
+</head>
+<body>
+<div th:replace="navbar :: navbar"></div>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+      <h1 class = "text-center"> Edit Team Member </h1>
+      <div class = "card-body">
+        <form th:action="@{/teamMember/{teamId}/{id} (id=${teamMember.id}, teamId=${team.id})}" th:object = "${teamMember}" method="POST">
+          <div class = "form-group">
+            <label> Pokemon</label>
+            <select class="form-control" th:field="*{pokemon.id}">
+              <option th:each="pokemon : ${pokemon}" th:value="${pokemon.id}" th:text="${pokemon.name}"></option>
+            </select>
+<!--            <input-->
+<!--                    type = "text"-->
+<!--                    name = "pokemon"-->
+<!--                    th:field = "*{pokemon}"-->
+<!--                    class = "form-control"-->
+<!--                    placeholder = "Enter Pokemon Id" />-->
+            <label> Item</label>
+            <select class="form-control" th:field="*{item.id}">
+              <option th:each="item : ${item}" th:value="${item.id}" th:text="${item.name}"></option>
+            </select>
+<!--            <input-->
+<!--                    type = "text"-->
+<!--                    name = "item"-->
+<!--                    th:field = "*{item}"-->
+<!--                    class = "form-control"-->
+<!--                    placeholder = "Enter Item Id" />-->
+            <label> Ability</label>
+<!--            <input-->
+<!--                    type = "text"-->
+<!--                    name = "item"-->
+<!--                    th:field = "*{ability.name}"-->
+<!--                    class = "form-control"-->
+<!--                    placeholder = "Enter Ability Name" />-->
+
+              <select class="form-control" th:field="*{ability.name}">
+                <option th:each="ability : ${ability}" th:value="${ability.name}" th:text="${ability.name}"></option>
+              </select>
+
+            <label> Nature </label>
+            <select class="form-control" th:field="*{nature.name}">
+              <option th:each="nature : ${nature}" th:value="${nature.name}" th:text="${nature.name}"></option>
+            </select>
+
+            <label> Attack 1 </label>
+            <select class="form-control" th:field="*{attack1.id}">
+              <option th:each="attack : ${attack}" th:value="${attack.id}" th:text="${attack.name}"></option>
+            </select>
+
+            <label> Attack 2 </label>
+            <select class="form-control" th:field="*{attack2.id}">
+              <option th:each="attack : ${attack}" th:value="${attack.id}" th:text="${attack.name}"></option>
+            </select>
+
+            <label> Attack 3 </label>
+            <select class="form-control" th:field="*{attack3.id}">
+              <option th:each="attack : ${attack}" th:value="${attack.id}" th:text="${attack.name}"></option>
+            </select>
+
+            <label> Attack 4 </label>
+            <select class="form-control" th:field="*{attack4.id}">
+              <option th:each="attack : ${attack}" th:value="${attack.id}" th:text="${attack.name}"></option>
+            </select>
+
+
+            </select>
+
+            <div display="flex" flex-direction="column">
+              <label> EVs</label>
+                        <input
+                    type = "number"
+                    name = "hp"
+                    th:field = "*{hpEv}"
+                    class = "form-control"
+                    placeholder = "Hp EVs"
+                    max = 255 />
+
+              <input
+                      type = "number"
+                      name = "attack"
+                      th:field = "*{attackEv}"
+                      class = "form-control"
+                      placeholder = "Attack EVs"
+                      max = 255/>
+              <input
+                      type = "number"
+                      name = "defense"
+                      th:field = "*{defenseEv}"
+                      class = "form-control"
+                      placeholder = "Defense Evs"
+                      max = 255/>
+              <input
+                      type = "number"
+                      name = "Sp Attack"
+                      th:field = "*{spAttackEv}"
+                      class = "form-control"
+                      placeholder = "Sp Attack Evs"
+                      max = 255/>
+              <input
+                      type = "number"
+                      name = "Sp Def"
+                      th:field = "*{spDefenseEv}"
+                      class = "form-control"
+                      placeholder = "Sp Defense Evs"
+                      max = 255/>
+              <input
+                      type = "number"
+                      name = "speed"
+                      th:field = "*{speedEv}"
+                      class = "form-control"
+                      placeholder = "Speed EVs"
+                      max = 255/>
+            </div>
+            <div display="flex" flex-direction="column">
+              <label> IVs</label>
+              <input
+                      type = "number"
+                      name = "hp"
+                      th:field = "*{hpIv}"
+                      class = "form-control"
+                      placeholder = "Hp Iv"
+                      max = 31 />
+
+              <input
+                      type = "number"
+                      name = "attack"
+                      th:field = "*{attackIv}"
+                      class = "form-control"
+                      placeholder = "Attack Iv"
+                      max = 31 />
+              <input
+                      type = "number"
+                      name = "defense"
+                      th:field = "*{defenseIv}"
+                      class = "form-control"
+                      placeholder = "Defense Iv"
+                      max = 31 />
+              <input
+                      type = "number"
+                      name = "Sp Attack"
+                      th:field = "*{spAttackIv}"
+                      class = "form-control"
+                      placeholder = "Sp Attack Iv"
+                      max = 31 />
+              <input
+                      type = "number"
+                      name = "Sp Def"
+                      th:field = "*{spDefenseIv}"
+                      class = "form-control"
+                      placeholder = "Sp Defense Iv"
+                      max = 31 />
+              <input
+                      type = "number"
+                      name = "speed"
+                      th:field = "*{speedIv}"
+                      class = "form-control"
+                      placeholder = "Speed Iv"
+                      max = 31 />
+            </div>
+          </div>
+
+
+          <div class = "box-footer">
+            <button type="submit" class = "btn btn-seconday">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

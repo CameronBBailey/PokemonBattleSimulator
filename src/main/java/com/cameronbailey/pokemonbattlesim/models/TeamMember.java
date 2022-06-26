@@ -37,6 +37,7 @@ public class TeamMember {
     @ManyToOne
     private Attack attack4;
 
+    private Long position;
     private Long hpEv;
     private Long attackEv;
     private Long defenseEv;
@@ -55,7 +56,15 @@ public class TeamMember {
 
     }
 
-    public TeamMember(Long teamId, Long pokemonId, Long itemId, String abilityName, String natureName, Long attackId1,Long attackId2, Long attackId3, Long attackId4, Long hpEv, Long attackEv, Long defenseEv, Long spAttackEv, Long spDefenseEv, Long speedEv, Long hpIv, Long attackIv, Long defenseIv, Long spAttackIv, Long spDefenseIv, Long speedIv) {
+    public TeamMember(Long position, Long teamId) {
+        this.position = position;
+        this.team = new Team(teamId);
+        this.item = new Item(1L);
+        this.pokemon = new Pokemon(1L);
+        this.ability = new Ability("Adaptability");
+        this.nature = new Nature("Hardy");
+    }
+    public TeamMember(Long teamId, Long pokemonId, Long itemId, String abilityName, String natureName, Long attackId1,Long attackId2, Long attackId3, Long attackId4, Long position, Long hpEv, Long attackEv, Long defenseEv, Long spAttackEv, Long spDefenseEv, Long speedEv, Long hpIv, Long attackIv, Long defenseIv, Long spAttackIv, Long spDefenseIv, Long speedIv) {
         this.team = new Team(teamId);
         this.pokemon = new Pokemon(pokemonId);
         this.item = new Item(itemId);
@@ -77,6 +86,7 @@ public class TeamMember {
         this.spAttackIv = spAttackIv;
         this.spDefenseIv = spDefenseIv;
         this.speedIv = speedIv;
+        this.position = position;
     }
 
     public Long getId() {
@@ -107,24 +117,24 @@ public class TeamMember {
         return item;
     }
 
-    public void setItem(Long itemId) {
-        this.item = new Item(itemId);
+    public void setItem(Item item) {
+        this.item = item;
     }
 
-    public Ability getAbilityId() {
+    public Ability getAbility() {
         return ability;
     }
 
-    public void setAbilityId(String abilityId) {
-        this.ability = new Ability(abilityId);
+    public void setAbility(Ability ability) {
+        this.ability = ability;
     }
 
     public Nature getNature() {
         return nature;
     }
 
-    public void setNature(String natureName) {
-        this.nature = new Nature(natureName);
+    public void setNature(Nature nature) {
+        this.nature = nature;
     }
 
     public Long getHpEv() {
@@ -254,4 +264,8 @@ public class TeamMember {
     public void setAttack4(Attack attack4) {
         this.attack4 = attack4;
     }
+
+    public Long getPosition() {return position; }
+
+    public void setPosition() {this.position = position; }
 }

@@ -21,7 +21,7 @@ public class AbilityController {
     }
 
     @GetMapping
-    public List<Ability> getAbilityService() {
+    public List<Ability> getAbility() {
         return abilityService.getAbility();
     }
 }

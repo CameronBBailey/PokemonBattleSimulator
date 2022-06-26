@@ -25,10 +25,10 @@ public class PokemonController {
         return pokemonService.getPokemon();
     }
 
-    @GetMapping(path = "{pokemonId}")
-    public Optional<Pokemon> getPokemonById(@PathVariable("pokemonId") Long pokemonId) {
-        return pokemonService.getPokemonById(pokemonId);
-    }
+//    @GetMapping(path = "{pokemonId}")
+//    public Optional<Pokemon> getPokemonById(@PathVariable("pokemonId") Long pokemonId) {
+//        return pokemonService.getPokemonById(pokemonId);
+//    }
 
 
 }

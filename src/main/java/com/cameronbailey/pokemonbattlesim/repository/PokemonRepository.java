@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface PokemonRepository extends JpaRepository<Pokemon,Long> {
-    Optional<Pokemon> findPokemonById(Long id);
+//    Optional<Pokemon> findPokemonById(Long id);
 }
