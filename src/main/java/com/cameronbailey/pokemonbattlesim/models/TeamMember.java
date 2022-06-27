@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table
 public class TeamMember {
-    @Id
+    @Id /* Auto generates Id*/
     @SequenceGenerator(
             name = "member_sequence",
             sequenceName = "member_sequence",
@@ -56,7 +56,7 @@ public class TeamMember {
 
     }
 
-    public TeamMember(Long position, Long teamId) {
+    public TeamMember(Long position, Long teamId) { /* Used for creating a "default" Team Member, we give it the team id and position and the remaining values in our table we want displayed are given default values */
         this.position = position;
         this.team = new Team(teamId);
         this.item = new Item(1L);
@@ -88,7 +88,7 @@ public class TeamMember {
         this.speedIv = speedIv;
         this.position = position;
     }
-
+    /* Getters and Setters */
     public Long getId() {
         return id;
     }

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/css/navbar.css"/>
+<body>
+<div th:fragment="navbar">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/team">Teams</a></li>
+        <li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
+        <li sec:authorize="isAnonymous()"><a href="/register">Register</a></li>
+        <li sec:authorize="isAuthenticated()">
+            <form th:action="@{../../../logout}" method="post" th:hidden="true" name="logoutForm">
+                <input type="submit" value="Logout" />
+            </form>
+            <a href="javascript:document.logoutForm.submit()">Logout</a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

@@ -15,7 +15,7 @@ import java.util.List;
 
 @Controller
 public class TeamController {
-
+    /* Creates and instance of all our Service classes */
     private final TeamService teamService;
     private final TeamMemberService teamMemberService;
 
@@ -29,6 +29,7 @@ public class TeamController {
 
     private final PokemonService pokemonService;
 
+    private final String redirectTeam = "redirect:/team";
 
     @Autowired
     public TeamController(TeamService teamService, TeamMemberService teamMemberService, AbilityService abilityService, ItemService itemService, NatureService natureService, AttackService attackService, PokemonService pokemonService) {
@@ -44,10 +45,8 @@ public class TeamController {
 
     @GetMapping("/team")
     public String getTeams(Model model) {
-        CustomUserDetails customUserDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-                model.addAttribute("index", teamService.getTeamByUserId(customUserDetails.getId()));
-//        System.out.println(teamService.getTeams().get(1).getName());
-//        System.out.println(teamService.getTeamByUserId(1L).get(0).getName());
+        CustomUserDetails customUserDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal(); /* Gets our Principal */
+                model.addAttribute("index", teamService.getTeamByUserId(customUserDetails.getId())); /* Gets our Id from logged in user and returns a attribute with all teams with that user id */
         return "index";
     }
 //  Old function for getting a specific Users Teams
@@ -60,9 +59,9 @@ public class TeamController {
 
     @GetMapping("/team/edit/{id}")
     public String editTeamForm(@PathVariable Long id, Model model) {
-        model.addAttribute("team", teamService.getTeamById(id));
+        model.addAttribute("team", teamService.getTeamById(id));/* Adds a Team attribute to our model  */
         List<TeamMember> teamMember = teamMemberService.getTeamMembersByTeamId(id);
-        model.addAttribute("teamMember", teamMember);
+        model.addAttribute("teamMember", teamMember);/* Gets a list of team members based on the Team id in the path and adds it to the model */
         return "edit_team";
     }
 
@@ -74,7 +73,7 @@ public class TeamController {
         model.addAttribute("item", itemService.getItem());
         model.addAttribute("nature", natureService.getNature());
         model.addAttribute("attack", attackService.getAttack());
-        model.addAttribute("pokemon", pokemonService.getPokemon());
+        model.addAttribute("pokemon", pokemonService.getPokemon());/* Adds a specific Team and TeamMember based on the id, as well as a list of our abilities, items, natures, attacks, and pokemon. */
         return "edit_team_member";
     }
 
@@ -84,8 +83,8 @@ public class TeamController {
         Team existingTeam = teamService.getTeamById(id);
         existingTeam.setId(id);
         existingTeam.setName(team.getName());
-        teamService.updateTeam(existingTeam);
-        return "redirect:/team";
+        teamService.updateTeam(existingTeam); /* Saves a team updating the name */
+        return redirectTeam;
     }
 
     @PostMapping("/teamMember/{teamId}/{id}")
@@ -112,7 +111,7 @@ public class TeamController {
         existingTeamMember.setSpDefenseIv(teamMember.getSpAttackIv());
         existingTeamMember.setSpeedIv(teamMember.getSpeedIv());
 
-        teamMemberService.updateTeamMember(existingTeamMember);
+        teamMemberService.updateTeamMember(existingTeamMember);/* Updates our team Member with all of the above info from our model */
 
         return "redirect:/team/edit/{teamId}";
     }
@@ -130,31 +129,31 @@ public class TeamController {
     public String saveTeam(@ModelAttribute("team") Team team) {
         CustomUserDetails customUserDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         team.setUser(customUserDetails.getId());
-        teamService.saveTeam(team);
+        teamService.saveTeam(team); /* Takes our Team in the model and saves it as a new team */
         TeamMember teamMember = new TeamMember(1L, team.getId());
         TeamMember teamMember2 = new TeamMember(2L, team.getId());
         TeamMember teamMember3 = new TeamMember(3L, team.getId());
         TeamMember teamMember4 = new TeamMember(4L, team.getId());
         TeamMember teamMember5 = new TeamMember(5L, team.getId());
-        TeamMember teamMember6 = new TeamMember(6L, team.getId());
+        TeamMember teamMember6 = new TeamMember(6L, team.getId()); /* Creates 6 new Team Members upon creation of a new team, gives these team members a position and sets the Team id to the model team */
 
         teamMemberService.addNewTeamMember(teamMember);
         teamMemberService.addNewTeamMember(teamMember2);
         teamMemberService.addNewTeamMember(teamMember3);
         teamMemberService.addNewTeamMember(teamMember4);
         teamMemberService.addNewTeamMember(teamMember5);
-        teamMemberService.addNewTeamMember(teamMember6);
+        teamMemberService.addNewTeamMember(teamMember6); /* Takes our team members and saves them */
 
-        return "redirect:/team";
+        return redirectTeam;
     }
 
 
     @Transactional
     @GetMapping("/team/delete/{id}")
     public String deleteStudentById(@PathVariable Long id) {
-        teamMemberService.deleteTeamMembersByTeamId(id);
-        teamService.deleteTeamById(id);
-        return "redirect:/team";
+        teamMemberService.deleteTeamMembersByTeamId(id); /* Deletes all of our team members with our team Id */
+        teamService.deleteTeamById(id); /* after removing the team members, removes the team. */
+        return redirectTeam;
     }
 
 }

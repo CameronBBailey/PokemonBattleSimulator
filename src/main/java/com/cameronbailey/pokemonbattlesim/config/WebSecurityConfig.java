@@ -17,15 +17,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private DataSource dataSource;
+//    @Autowired
+//    private DataSource dataSource;
 
-    @Bean
+    @Bean /* Creates a new instance of our customUserDetailsService */
     public UserDetailsService userDetailsService() {
         return new CustomUserDetailsService();
     }
 
-    @Bean
+    @Bean /* Creates a new new instance of our password encoder */
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
@@ -47,18 +47,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/team", "/team/{userId}", "/team/new", "/team/edit/{teamId}").authenticated()
+                .antMatchers("/team", "/team/{userId}", "/team/new", "/team/edit/{teamId}", "/team/edit/editTeamMember/{teamId}/{teamMemberId}").authenticated()/* Sets what pages you need to be authenticated to view */
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .permitAll()
-                    .usernameParameter("email")
-                    .defaultSuccessUrl("/team")
+                    .usernameParameter("email")/* Sets which param userd to log in */
+                    .defaultSuccessUrl("/team")/* Redirects after a successful login */
                     .permitAll()
                 .and()
-                .logout().logoutSuccessUrl("/").permitAll();
+                .logout().logoutSuccessUrl("/").permitAll();/* Redirects after a successful logout */
     }
-//, "/team/edit/editTeamMember/{teamId}/{teamMemberId}"
+
 
 }

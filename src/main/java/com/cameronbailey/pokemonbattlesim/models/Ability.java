@@ -23,6 +23,7 @@ public class Ability {
         Description = description;
     }
 
+    /* Getters and Setters */
     public String getName() {
         return name;
     }

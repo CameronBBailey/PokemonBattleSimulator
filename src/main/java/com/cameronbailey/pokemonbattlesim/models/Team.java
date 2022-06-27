@@ -33,6 +33,7 @@ public class Team {
         this.user = new User(userId);
     }
 
+    /* Getters and Setters */
     public Long getId() {
         return id;
     }

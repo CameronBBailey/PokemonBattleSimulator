@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<div th:replace="navbar :: navbar"></div>
+<div th:replace="navbar_edit_team_member :: navbar"></div>
 <div class = "container">
   <div class = "row">
     <div class = "col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
@@ -21,34 +21,17 @@
         <form th:action="@{/teamMember/{teamId}/{id} (id=${teamMember.id}, teamId=${team.id})}" th:object = "${teamMember}" method="POST">
           <div class = "form-group">
             <label> Pokemon</label>
-            <select class="form-control" th:field="*{pokemon.id}">
+            <select class="form-control" th:field="*{pokemon.id}"><!-- Populates a drop down with every pokemon in our database with the name being the Select option and the value being its Id -->
               <option th:each="pokemon : ${pokemon}" th:value="${pokemon.id}" th:text="${pokemon.name}"></option>
             </select>
-<!--            <input-->
-<!--                    type = "text"-->
-<!--                    name = "pokemon"-->
-<!--                    th:field = "*{pokemon}"-->
-<!--                    class = "form-control"-->
-<!--                    placeholder = "Enter Pokemon Id" />-->
+
             <label> Item</label>
-            <select class="form-control" th:field="*{item.id}">
+            <select class="form-control" th:field="*{item.id}"><!-- Same as above but with Items -->
               <option th:each="item : ${item}" th:value="${item.id}" th:text="${item.name}"></option>
             </select>
-<!--            <input-->
-<!--                    type = "text"-->
-<!--                    name = "item"-->
-<!--                    th:field = "*{item}"-->
-<!--                    class = "form-control"-->
-<!--                    placeholder = "Enter Item Id" />-->
-            <label> Ability</label>
-<!--            <input-->
-<!--                    type = "text"-->
-<!--                    name = "item"-->
-<!--                    th:field = "*{ability.name}"-->
-<!--                    class = "form-control"-->
-<!--                    placeholder = "Enter Ability Name" />-->
 
-              <select class="form-control" th:field="*{ability.name}">
+            <label> Ability</label>
+              <select class="form-control" th:field="*{ability.name}"><!-- Same as above -->
                 <option th:each="ability : ${ability}" th:value="${ability.name}" th:text="${ability.name}"></option>
               </select>
 
@@ -81,7 +64,7 @@
             </select>
 
             <div display="flex" flex-direction="column">
-              <label> EVs</label>
+              <label> EVs</label> <!-- Gives us an option to put in a numerical response, with a max of 255-->
                         <input
                     type = "number"
                     name = "hp"
@@ -127,7 +110,7 @@
                       max = 255/>
             </div>
             <div display="flex" flex-direction="column">
-              <label> IVs</label>
+              <label> IVs</label><!-- Same as above only with a max value of 31 -->
               <input
                       type = "number"
                       name = "hp"

@@ -27,6 +27,7 @@ public class Nature {
         this.bane = bane;
     }
 
+    /* Getters and Setters */
     public String getName() {
         return name;
     }

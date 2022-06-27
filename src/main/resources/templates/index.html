@@ -30,20 +30,22 @@
         <tr>
 
             <th> Team Name</th>
-            <th> Action</th>
+            <th> Update</th>
+            <th> Delete</th>
 
         </tr>
         </thead>
 
-        <tbody>
+        <tbody> <!-- Loops through our list of teams populating a row in the table for each team -->
         <tr th:each = "team: ${index}">
             <td th:text= "${team.name}"></td>
             <td>
                 <a th:href = "@{/team/edit/{id}(id=${team.id})}"
-                   class = "btn btn-primary">Update</a>
-
+                   class = "btn btn-primary">Update</a> <!-- Takes us to the team update page, using the Team Id to load the content -->
+            </td>
+            <td>
                 <a th:href = "@{/team/delete/{id}(id=${team.id})}"
-                   class = "btn btn-danger">Delete</a>
+                   class = "btn btn-danger">Delete</a><!-- Deletes the team -->
 
             </td>
         </tr>

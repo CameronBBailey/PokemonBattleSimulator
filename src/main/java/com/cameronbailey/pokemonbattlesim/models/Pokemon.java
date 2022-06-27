@@ -56,6 +56,7 @@ public class Pokemon {
         this.speed = speed;
     }
 
+    /* Getters and Setters */
     @Override
     public String toString() {
         return "Pokemon{" +

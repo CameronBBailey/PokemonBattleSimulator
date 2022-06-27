@@ -15,7 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class AppController {
 
     @Autowired
-    private UserRepository repo;
+    private UserRepository repo; /* Create an instance of our User Repository */
 
     @GetMapping("")
     public String viewHomepage() {
@@ -24,17 +24,21 @@ public class AppController {
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new User()); /* Adds a User attribute to our model to store our registration info*/
 
         return "register";
     }
 
     @PostMapping("/process_register")
     public String processRegister(User user) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(); /* Encodes our password to store it safely in our database */
         String encodedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-        repo.save(user);
+        user.setPassword(encodedPassword);/* sets the password on the user object to our enocoded password */
+        try {
+            repo.save(user); /* Saves our user to the database */
+        } catch (Exception e) {
+            return "redirect:/register";
+        }
 
         return "register_success";
     }

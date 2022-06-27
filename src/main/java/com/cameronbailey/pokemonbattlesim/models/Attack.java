@@ -37,6 +37,7 @@ public class Attack {
         this.pp = pp;
     }
 
+    /* Getters and Setters */
     public Long getId() {
         return attackId;
     }

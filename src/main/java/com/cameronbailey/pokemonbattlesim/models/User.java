@@ -16,6 +16,7 @@ public class User {
             generator = "user_sequence"
     )
     private Long id;
+    @Column(unique = true)
     private String email;
     private String username;
     private String password;
@@ -35,6 +36,7 @@ public class User {
         this.password = password;
     }
 
+    /* Getters and Setters */
     public Long getId() {
         return id;
     }

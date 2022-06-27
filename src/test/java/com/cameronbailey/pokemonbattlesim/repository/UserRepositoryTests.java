@@ -1,4 +1,4 @@
-package com.cameronbailey.pokemonbattlesim;
+package com.cameronbailey.pokemonbattlesim.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,7 +13,7 @@ import org.springframework.test.annotation.Rollback;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Rollback(false)
+@Rollback(true)
 public class UserRepositoryTests {
 
     @Autowired
@@ -24,8 +24,8 @@ public class UserRepositoryTests {
 
     @Test
     public void testCreateUser() {
-        User user = new User();
-        user.setEmail("CameronBradBailey@gmail.com");
+        User user = new User();/*  */
+        user.setEmail("TestTestTestTestTest@Test.com");
         user.setPassword("12345");
         user.setUsername("Flavor Blasted");
 
@@ -38,9 +38,15 @@ public class UserRepositoryTests {
 
     @Test
     public void testFindUserByEmail() {
-        String email = "CameronBradBailey@gmail.com";
+        User user = new User();
+        user.setEmail("TestTestTestTestTest@Test.com");
+        user.setPassword("12345");
+        user.setUsername("Flavor Blasted");
 
-        User user = repo.findUserByEmail(email);
-        assertThat(user).isNotNull();
+        User savedUser = repo.save(user);
+        String email = "TestTestTestTestTest@Test.com";
+
+        User user1 = repo.findUByEmail(email);
+        assertThat(user1).isNotNull();
     }
 }

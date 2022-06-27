@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
-<div th:replace="navbar :: navbar"></div>
+<div th:replace="navbar_edit_team :: navbar"></div>
 <div class = "container">
     <div class = "row">
         <div class = "col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
@@ -52,12 +52,12 @@
     </tr>
     </thead>
 
-    <tbody>
-    <tr th:each = "teamMember: ${teamMember}">
+    <tbody> <!-- -->
+    <tr th:each = "teamMember: ${teamMember}"><!-- for each teammember create a table row with the following values -->
 
-        <td th:text= "${teamMember.position}"></td>
+        <td th:text= "${teamMember.position}"></td><!-- Gets the position value for the team member -->
         <td th:text= "${teamMember.pokemon.name}"></td>
-        <td><img th:src="@{${'https://img.pokemondb.net/sprites/x-y/normal/' + #strings.toLowerCase(teamMember.pokemon.name) + '.png'}}" /></td>
+        <td><img th:src="@{${'https://img.pokemondb.net/sprites/x-y/normal/' + #strings.toLowerCase(teamMember.pokemon.name) + '.png'}}" /></td><!-- takes our pokemon name from the team member, converts it too lower case and inserts it into the sprite URL -->
 <!--        <td th:text= "${teamMember.ability}"></td>-->
         <td th:text= "${teamMember.item.name}"></td>
         <td th:text= "${teamMember.nature.name}"></td>

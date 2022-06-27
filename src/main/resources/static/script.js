@@ -1,18 +1,15 @@
 let pass = document.querySelector("#password");
 let passval = document.querySelector("#validatepassword");
 let button = document.querySelector("button");
-console.log(pass);
-console.log(passval)
-button.disabled = true;
-pass.addEventListener("change", validatePassword);
+button.disabled = true; /* Disables our submit button so we cannot submit our form */
+pass.addEventListener("change", validatePassword); /* After a change, runs the validate password function */
 passval.addEventListener("change", validatePassword);
 
-function validatePassword() {
-    console.log("are we getting here")
+function validatePassword() { /* Checks to see if the password and the passval are the same */
+
     if(document.getElementById("password").value != document.getElementById("validatepassword").value) {
-        button.disabled = true;
+        button.disabled = true; /* Keeps submit button disabled */
     } else {
-        console.log("they should be equal")
-        button.disabled = false;
+        button.disabled = false;/* Re enables the submit button */
     }
 }
