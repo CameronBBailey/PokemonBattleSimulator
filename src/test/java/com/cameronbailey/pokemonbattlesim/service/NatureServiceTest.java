@@ -20,7 +20,7 @@ public class NatureServiceTest {
     @Autowired
     private NatureService service;
 
-    @Test
+    @Test /* Tests getting all natures */
     public void testGetNature() {
         List<Nature> nature = service.getNature();
         assertThat(nature).isNotNull();

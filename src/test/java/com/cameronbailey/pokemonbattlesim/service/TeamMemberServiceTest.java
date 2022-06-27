@@ -18,8 +18,8 @@ public class TeamMemberServiceTest {
     @Autowired
     private TeamMemberService service;
 
-    @Test
-    public void testGetTeams() {
+    @Test /* Tests getting all teams members */
+    public void testGetTeamsMembers() {
         List<TeamMember> teamMembers = service.getTeamMembers();
         assertThat(teamMembers).isNotNull();
     }

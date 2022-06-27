@@ -20,7 +20,7 @@ public class AttackServiceTest {
     @Autowired
     private AttackService service;
 
-    @Test
+    @Test /* Tests getting all teams */
     public void testGetTeams() {
         List<Attack> attack = service.getAttack();
         assertThat(attack).isNotNull();

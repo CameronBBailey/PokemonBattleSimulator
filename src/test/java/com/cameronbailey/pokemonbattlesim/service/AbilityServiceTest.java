@@ -20,7 +20,7 @@ public class AbilityServiceTest {
     @Autowired
     private AbilityService service;
 
-    @Test
+    @Test /*  Tests getting an ability */
     public void testGetAbility() {
         List<Ability> ability = service.getAbility();
         assertThat(ability).isNotNull();

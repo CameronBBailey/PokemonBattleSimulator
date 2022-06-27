@@ -20,7 +20,7 @@ public class PokemonServiceTest {
     @Autowired
     private PokemonService service;
 
-    @Test
+    @Test /* Tests getting all pokemon */
     public void testGetPokemon() {
         List<Pokemon> pokemon = service.getPokemon();
         assertThat(pokemon).isNotNull();

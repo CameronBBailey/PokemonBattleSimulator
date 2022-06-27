@@ -29,7 +29,7 @@ public class TeamRepositoryTests {
     @Autowired
     private TestEntityManager entityManager;
 
-    @Test
+    @Test /* Tests Creating a team */
     public void testCreateTeam() {
         Team team = new Team();
         Team savedTeam = repo.save(team);
@@ -38,7 +38,7 @@ public class TeamRepositoryTests {
         assertThat(team.getId()).isEqualTo(existTeam.getId());
     }
 
-    @Test
+    @Test /* Tests finding teams by user Id */
     public void testFindTeamByUserId() {
 
         User user = new User();
@@ -58,7 +58,7 @@ public class TeamRepositoryTests {
 
     }
 
-    @Test
+    @Test /* Tests finding a team by its Id */
     public void testFindTeamById() {
         Team team = new Team();
         team.setName("this is a test");

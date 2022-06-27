@@ -20,7 +20,7 @@ public class ItemServiceTest {
     @Autowired
     private ItemService service;
 
-    @Test
+    @Test /* Tests getting all items */
     public void testGetItems() {
         List<Item> item = service.getItem();
         assertThat(item).isNotNull();

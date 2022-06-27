@@ -22,7 +22,7 @@ class TeamServiceTest {
     @Autowired
     private TeamService service;
 
-    @Test
+    @Test /* Tests getting all teams */
     public void testGetTeams() {
         List<Team> teams = service.getTeams();
         assertThat(teams).isNotNull();

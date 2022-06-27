@@ -27,7 +27,7 @@ public class TeamMemberRepositoryTests {
     @Autowired
     private TestEntityManager entityManager;
 
-    @Test
+    @Test /* Tests finding Team Member by Id */
     public void testFindTeamMemberById() {
         TeamMember teamMember = new TeamMember();
         teamMember.setId(123456789L);
@@ -38,7 +38,7 @@ public class TeamMemberRepositoryTests {
         assertThat(testTeam.getId()).isEqualTo(existTeamMember.getId());
     }
 
-    @Test
+    @Test /* Tests finding Team Members by Team Id */
     public void testFindTeamMembersByTeamId() {
         Team team = new Team();
         team.setName("this is a test");
@@ -55,7 +55,7 @@ public class TeamMemberRepositoryTests {
 
     }
 
-    @Test
+    @Test /* Tests Deleting Team Members by Team Id */
     public void testDeleteTeamMembersByTeamId() {
         Team team = new Team();
         team.setName("this is a test");

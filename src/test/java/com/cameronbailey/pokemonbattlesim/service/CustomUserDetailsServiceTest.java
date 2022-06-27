@@ -17,7 +17,7 @@ public class CustomUserDetailsServiceTest {
     @Autowired
     private CustomUserDetailsService service;
 
-    @ParameterizedTest
+    @ParameterizedTest /* Tests Loading by username */
     @ValueSource(strings = {"CameronBradBailey@gmail.com", "CameronBradBailey1@gmail.com"})
     public void testLoadByUsername(String email) {
         UserDetails user = service.loadUserByUsername(email);
