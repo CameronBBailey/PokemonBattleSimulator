@@ -45,3 +45,10 @@ Setup
 application with OR
 - For a full experience, run the attached SQL file for the Natures and import the 4 CSVs into their tables
 
+Notes
+- I will be experimenting in future versions with switching to a decoupled frontend back end application using either
+React or Angular, as such I have basic REST controllers setup to return basic data in JSON format. For this version of
+the application Ability Controller, Attack Controller, ItemController, NatureController, PokemonController, Team Member
+Controller and User Controller are all just test REST Controllers and do not actually contribute to the current state
+of the project. Only the AppController, Login Controller, and Team Controller are used in this version of the project
+
